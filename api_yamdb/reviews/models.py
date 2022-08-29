@@ -7,7 +7,7 @@ from django.db import models
 from .manager import UserManager
 
 
-class User(AbstractUser): 
+class User(AbstractUser):
     USER = 'user'
     MODERATOR = 'moderator'
     ADMIN = 'admin'
