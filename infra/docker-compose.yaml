@@ -8,7 +8,7 @@ services:
     env_file:
       - ./.env
   web:
-    build: kobzev5612/api_yamdb:v1.00
+    image: kobzev5612/api_yamdb:v1.00
     restart: always
     volumes:
       - static_value:/app/static/
