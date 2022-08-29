@@ -54,71 +54,11 @@
 - Удалить произведение
 - Документация к API доступна по адресу http://127.0.0.1/redoc/
 
-### Установка
-##### Шаг 1. Проверьте установлен ли у вас Docker
-Прежде, чем приступать к работе, необходимо знать, что Docker установлен. Для этого достаточно ввести:
-```sh
-docker -v
-```
-Или скачайте Docker Desktop для Mac или Windows. Docker Compose будет установлен автоматически. В Linux убедитесь, что у вас установлена последняя версия Compose. Также вы можете воспользоваться официальной инструкцией.
-
-##### Шаг 2. Клонируйте репозиторий себе на компьютер
-Введите команду:
-```sh
-git clone https://github.com/DenisSivko/infra_sp2.git
-```
-##### Шаг 3. Создайте в клонированной директории файл .env
-Пример:
-```sh
-DB_ENGINE=django.db.backends.postgresql
-DB_NAME=postgres
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=postgres
-DB_HOST=db
-DB_PORT=5432
-```
-##### Шаг 4. Запуск docker-compose
-Для запуска необходимо выполнить из директории с проектом команду:
-```sh
-docker-compose up -d
-```
-##### Шаг 5. База данных
-Создаем и применяем миграции:
-```sh
-docker-compose exec web python manage.py makemigrations --noinput
-docker-compose exec web python manage.py migrate --noinput
-```
-##### Шаг 6. Подгружаем статику
-Выполните команду:
-```sh
-docker-compose exec web python manage.py collectstatic --no-input 
-```
-##### Шаг 7. Заполнение базы тестовыми данными
-Для заполнения базы тестовыми данными вы можете использовать файл fixtures.json, который находится в infra_sp2. Выполните команду:
-```sh
-docker-compose exec web python manage.py loaddata fixtures.json
-```
-##### Дополнительные команды
-Создание суперпользователя:
-```sh
-docker-compose exec web python manage.py createsuperuser
-```
-Остановить работу всех контейнеров можно командой:
-```sh
-docker-compose down
-```
-Для пересборки и запуска контейнеров воспользуйтесь командой:
-```sh
-docker-compose up -d --build 
-```
-Мониторинг запущенных контейнеров:
-```sh
-docker stats
-```
-Останавливаем и удаляем контейнеры, сети, тома и образы:
-```sh
-docker-compose down -v
-```
+### Workflow
+- tests - Проверка кода на соответствие стандарту PEP8 (с помощью пакета flake8) и запуск pytest. Дальнейшие шаги выполнятся только если push был в ветку master или main.
+- build_and_push_to_docker_hub - Сборка и доставка докер-образов на Docker Hub
+- deploy - Автоматический деплой проекта на боевой сервер. Выполняется копирование файлов из репозитория на сервер:
+- send_message - Отправка уведомления в Telegram
 
 ### Авторы
 ***Первый разработчик*** (https://github.com/Ermakov-Viktor) - писал всю часть, касающуюся управления пользователями (Auth и Users): систему регистрации и аутентификации, права доступа, работу с токеном, систему подтверждения через e-mail.
