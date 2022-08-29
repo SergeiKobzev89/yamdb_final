@@ -43,15 +43,15 @@ jobs:
       - name: Login to Docker
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.MY_USERNAME_DOCKER_HUB }}
-          password: ${{ secrets.MY_PASSWORD_DOCKER_HUB }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
           push: true
           context: ./api_yamdb/
-          tags: ${{ secrets.MY_USERNAME_DOCKER_HUB }}/api_yamdb:v1.00
+          tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb:v1.00
   
   deploy:
       runs-on: ubuntu-latest
@@ -65,9 +65,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull ${{ secrets.MY_USERNAME_DOCKER_HUB }}/api_yamdb:v1.00
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/api_yamdb:v1.00
             sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 ${{ secrets.MY_USERNAME_DOCKER_HUB }}/api_yamdb:v1.00
+            sudo docker run --rm -d -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/api_yamdb:v1.00
 
 
   send_message:
