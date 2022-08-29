@@ -8,7 +8,7 @@ from .manager import UserManager
 
 
 class User(AbstractUser):
-
+    
     USER = 'user'
     MODERATOR = 'moderator'
     ADMIN = 'admin'
