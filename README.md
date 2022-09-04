@@ -1,4 +1,4 @@
-![example workflow](https://github.com/github/docs/actions/workflows/yamdb_workflow.yml/badge.svg)
+![Build Status](https://github.com/SergeiKobzev89/yamdb_final/workflows/yamdb_workflow/badge.svg)](https://github.com/SergeiKobzev89/yamdb_final/actions/workflows/yamdb_workflow.yml)
 
 # Групповой проект «Yamdb»
 ### Описание
