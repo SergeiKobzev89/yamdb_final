@@ -1,4 +1,4 @@
-![Build Status](https://github.com/SergeiKobzev89/yamdb_final/workflows/yamdb_workflow/badge.svg)](https://github.com/SergeiKobzev89/yamdb_final/actions/workflows/yamdb_workflow.yml)
+![Build Status](https://github.com/SergeiKobzev89/yamdb_final/workflows/yamdb_workflow/badge.svg)
 
 # Групповой проект «Yamdb»
 ### Описание
