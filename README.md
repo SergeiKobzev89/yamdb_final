@@ -72,9 +72,11 @@
 Все описанное ниже относится к ОС Linux. Клонируем репозиторий и и переходим в него.
 Создаем и активируем виртуальное окружение:
 
-```python3 -m venv venv 
+```
+python3 -m venv venv 
 source /venv/bin/activate (source /venv/Scripts/activate - для Windows) 
-python -m pip install --upgrade pip```
+python -m pip install --upgrade pip
+```
 
 Ставим зависимости из requirements.txt:
 
