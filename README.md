@@ -69,7 +69,14 @@
 
 ### Как запустить проект:
 
-Все описанное ниже относится к ОС Linux. Клонируем репозиторий и и переходим в него.
+Все описанное ниже относится к ОС Linux. Клонируем репозиторий и и переходим в него:
+
+```
+git clone git@github.com:SergeiKobzev89/yamdb_final.git
+cd yamdb_final 
+cd api_yamdb
+```
+
 Создаем и активируем виртуальное окружение:
 
 ```
@@ -92,8 +99,10 @@ python -m pip install --upgrade pip
 
 Выполняем миграции:
 
-```docker-compose exec web python manage.py makemigrations reviews 
-docker-compose exec web python manage.py migrate --run-syncdb```
+```
+docker-compose exec web python manage.py makemigrations reviews 
+docker-compose exec web python manage.py migrate --run-syncdb
+```
 
 Создаем суперпользователя:
 
@@ -113,12 +122,14 @@ docker-compose exec web python manage.py migrate --run-syncdb```
 
 Шаблон наполнения .env (не включен в текущий репозиторий) расположенный по пути infra/.env
 
-```DB_ENGINE=django.db.backends.postgresql
+```
+DB_ENGINE=django.db.backends.postgresql
 DB_NAME=postgres 
 POSTGRES_USER=postgres 
 POSTGRES_PASSWORD=postgres 
 DB_HOST=db 
-DB_PORT=5432```
+DB_PORT=5432
+```
 
 ### Авторы
 ***Первый разработчик*** (https://github.com/Ermakov-Viktor) - писал всю часть, касающуюся управления пользователями (Auth и Users): систему регистрации и аутентификации, права доступа, работу с токеном, систему подтверждения через e-mail.
