@@ -6,7 +6,7 @@ from reviews.models import Category, Comment, Genre, Review, Title, User
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
-        max_length=255,
+        max_length=254,
         validators=[UniqueValidator(queryset=User.objects.all())]
     )
 
