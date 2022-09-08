@@ -112,9 +112,9 @@ docker-compose exec web python manage.py migrate --run-syncdb
 
 ```docker-compose exec web python manage.py collectstatic --no-input```
 
-Создаем дамп базы данных (нет в текущем репозитории):
+Для заполнения базы данных:
 
-```docker-compose exec web python manage.py dumpdata > dumpPostrgeSQL.json```
+```python manage.py loaddata fixtures.json```
 
 Останавливаем контейнеры:
 
