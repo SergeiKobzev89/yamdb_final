@@ -3,7 +3,6 @@ import sqlite3
 
 from date import datetime as dt
 
-
 conn = sqlite3.connect('../db.sqlite3')
 c = conn.cursor()
 
