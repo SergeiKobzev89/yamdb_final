@@ -1,13 +1,16 @@
 import os
 from datetime import timedelta
 
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-DEBUG = False
 
 SECRET_KEY = os.getenv('SECRET_KEY', default='p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs')
 
+DEBUG = True
+
 ALLOWED_HOSTS = ['*']
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -55,9 +58,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
+
 DATABASES = {
     'default': {
-        'ENGINE': "django.db.backends.postgresql",
+        'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
@@ -65,6 +69,7 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT')
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -91,6 +96,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
 
 
 STATIC_URL = '/static/'
@@ -125,6 +131,7 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=99),
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 
