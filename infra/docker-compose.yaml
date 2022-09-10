@@ -3,13 +3,13 @@ version: '3.8'
 services:
   db:
     image: postgres:13.0-alpine
-    restart: always
     volumes:
       - /var/lib/postgresql/data/
     env_file:
       - ./.env
+
   web:
-    image: kobzev5612/api_yamdb:v1.00
+    build: kobzev5612/api_yamdb:latest
     restart: always
     volumes:
       - static_value:/app/static/
@@ -18,11 +18,9 @@ services:
       - db
     env_file:
       - ./.env
-    links:
-      - db
+
   nginx:
     image: nginx:1.21.3-alpine
-    restart: always
     ports:
       - "80:80"
     volumes:
